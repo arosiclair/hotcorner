@@ -1,8 +1,10 @@
 #define WIN32_LEAN_AND_MEAN
 #include <stdlib.h>
 #include <windows.h>
+#include <shellapi.h>
 
 #pragma comment(lib, "USER32")
+#pragma comment(lib, "shell32.lib")
 #pragma comment(linker, "/SUBSYSTEM:WINDOWS")
 
 #define KEYDOWN(k) ((k) & 0x80)
@@ -73,6 +75,13 @@ static DWORD WINAPI CornerHotFunc(LPVOID lpParameter)
 
     // Verify the corner is still hot
     if (GetCursorPos(&Point) == FALSE) {
+        return 1;
+    }
+
+    // Check if there's a fullscreen app running
+    QUERY_USER_NOTIFICATION_STATE pquns;
+    SHQueryUserNotificationState(&pquns);
+    if (pquns == QUNS_BUSY || pquns == QUNS_RUNNING_D3D_FULL_SCREEN || pquns == QUNS_PRESENTATION_MODE) {
         return 1;
     }
 
