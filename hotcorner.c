@@ -43,11 +43,6 @@ static const INPUT kCornerInput[] = {
 // How long cursor has to linger in the kHotCorner RECT to trigger input.
 static const DWORD kHotDelay = 80;
 
-// You can exit the application using the hot key CTRL+ALT+C by default, if it
-// interferes with some application you're using (e.g. a full screen game).
-static const DWORD kHotKeyModifiers = MOD_CONTROL | MOD_ALT;
-static const DWORD kHotKey = 'C';
-
 static HANDLE CornerThread = INVALID_HANDLE_VALUE;
 
 // This thread runs when the cursor enters the hot corner, and waits to see if the cursor stays in the corner.
@@ -147,8 +142,6 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
     if (!(MouseHook = SetWindowsHookEx(WH_MOUSE_LL, MouseHookCallback, NULL, 0)))
         return 1;
-
-    RegisterHotKey(NULL, 1, kHotKeyModifiers, kHotKey);
 
     while (GetMessage(&Msg, NULL, 0, 0)) {
         if (Msg.message == WM_HOTKEY) {
