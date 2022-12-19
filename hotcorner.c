@@ -73,10 +73,10 @@ static DWORD WINAPI CornerHotFunc(LPVOID lpParameter)
         return 1;
     }
 
-    // Check if there's a fullscreen app running
+    // Check if there's a game running
     QUERY_USER_NOTIFICATION_STATE pquns;
     SHQueryUserNotificationState(&pquns);
-    if (pquns == QUNS_BUSY || pquns == QUNS_RUNNING_D3D_FULL_SCREEN || pquns == QUNS_PRESENTATION_MODE) {
+    if (pquns == QUNS_RUNNING_D3D_FULL_SCREEN || pquns == QUNS_PRESENTATION_MODE) {
         return 1;
     }
 
