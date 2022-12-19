@@ -39,7 +39,7 @@ static const INPUT kCornerInput[] = {
 };
 
 // How long cursor has to linger in the kHotCorner RECT to trigger input.
-static const DWORD kHotDelay = 300;
+static const DWORD kHotDelay = 80;
 
 // You can exit the application using the hot key CTRL+ALT+C by default, if it
 // interferes with some application you're using (e.g. a full screen game).
