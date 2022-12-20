@@ -41,7 +41,7 @@ static const INPUT kCornerInput[] = {
 };
 
 // How long cursor has to linger in the kHotCorner RECT to trigger input.
-static const DWORD kHotDelay = 80;
+static const DWORD kHotDelay = 50;
 
 static HANDLE CornerThread = INVALID_HANDLE_VALUE;
 
