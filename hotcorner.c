@@ -76,7 +76,7 @@ static DWORD WINAPI CornerHotFunc(LPVOID lpParameter)
     // Check if there's a game running
     QUERY_USER_NOTIFICATION_STATE pquns;
     SHQueryUserNotificationState(&pquns);
-    if (pquns == QUNS_RUNNING_D3D_FULL_SCREEN || pquns == QUNS_PRESENTATION_MODE) {
+    if (pquns != QUNS_ACCEPTS_NOTIFICATIONS) {
         return 1;
     }
 
